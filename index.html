@@ -1,36 +1,100 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Idle Workers</title>
+    <title>Idle Workers | New GDP | Sovereign Individuals | Untapped GDP</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='description'
+          content='Idle Workers | New GDP | Sovereign Individuals | Untapped GDP'>
+    <meta name='copyright' content='Mohamed Hayibor'>
+    <meta property="og:title" content="Idle Workers | New GDP | Sovereign Individuals | Untapped GDP"/>
+    <meta property="og:description"
+          content="Idle Workers | New GDP | Sovereign Individuals | Untapped GDP"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Idle Workers</h1>
     <h2>Definition:</h2>
     <p>
-      People who are mainly working shit jobs for survival low pay, unmotivated, with shut down dreams.
-      They have access to free wifi connection, and nothing is happening around, they are security guards, sales clerks, with no one coming and going constanly,
+      People who are mainly working <strong>low pay</strong> shit jobs for survival, unmotivated, with shut down dreams.
+      They have access to free wifi connection and most of the time nothing is happening around them.<br><br>
+      
+      They are security guards, sales clerks, with no one coming and going constanly,
       yet they do not generally use the precious time to learn and get out of the curse of slavery.      
     </p>
 
     <h2>Problem:</h2>
     <p>
-      Any job where the worker wants the time to fly by: is fundamentally broken.
+      Any job where the worker wants the time to fly by: <strong>is fundamentally broken.</strong>
       Why not automate them. Work is a major part of our life and therefore dictates our overall happiness.<br><br>
       
-      How can we give these peeps leverage in doing something meaningful
+      How can we give <strong>Idle Workers</strong> leverage in doing something meaningful
       or learning something that gets them to actually have the ability to do meaningful work?
     </p>
 
-    <h2>Potential Solution:</h2>
+    <h2>Potential Solutions:</h2>
     <p>
-        Activity Value Blocks. A block of activity that curation markets members could do.<br>
-        For instance, Cent right right now has 2 AVBs: <br>
+        Activity Value Blocks. A block of activity that <strong>Idle Workers</strong><br>
+        (aka curation markets members) could do.<br>
+        <br>
 
-        * answering bounty questions<br>
-        * ranking answers
+        >> Answering bounty questions<br>
+        >> Finishing bounty jobs<br>
+        >> Ranking answers
     </p>
+
+    <div id="notifyBox">
+        <!-- https://www.w3schools.com/Css/tryit.asp?filename=trycss_forms -->
+        <label for="email">Get updates on solutions and products</label>
+        <input id="userEmail"  type="text" name="email"
+                maxlength="94"
+                minlength="5"
+                pattern=".+@globex.com"
+                placeholder="Your best email&hellip;"
+                required>   
+        
+        <input type="submit" value="Submit" onclick="addEmail(document.getElementById('userEmail').value)">
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyB22st9gLEAujo4ImOzGw1avm7hYdqSEiA",
+        authDomain: "idleworkers-a4093.firebaseapp.com",
+        databaseURL: "https://idleworkers-a4093.firebaseio.com",
+        projectId: "idleworkers-a4093",
+        storageBucket: "idleworkers-a4093.appspot.com",
+        messagingSenderId: "842538398694",
+        appId: "1:842538398694:web:77b92b96ff915ef91a5c27"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      const db = firebase.firestore();
+
+      function addEmail(userEmail) {
+        db.collection("idleworkersfans").add({
+          email: userEmail
+        })
+        .then(function(docRef) {
+          // id = docRef.id 
+          console.log("Written to DB");
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+
+        document.getElementById("userEmail").value = "";
+        document.getElementById("notifyBox").remove();
+      }
+    </script>
   </body>
 </html>
-<!-- <a href="https://zeit.co/docs" target="_blank" rel="noreferrer noopener"
->ZEIT Now</a>! -->
